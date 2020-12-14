@@ -1,15 +1,32 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { isEqual } from "lodash";
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
+
+JSON.parseSafe = (data) => {
+  let result = null;
+  try {
+    if (typeof data === "object") {
+      return data;
+    } else {
+      result = JSON.parse(data);
+    }
+  } catch (error) {}
+  return result;
+};
+
+React.isEqual = (a, b) => {
+  return isEqual(a, b);
+};
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
