@@ -1,12 +1,15 @@
-import React, { memo } from "react";
+import React from 'react';
 
-import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import useReactFontLoader from 'react-font-loader';
 
-import NowPlaying from "../components/NowPlaying";
+import Colors from '../constants/Colors';
+import CountdownProgress from '../components/CountdownProgress';
+import { hookMemo } from '../hook';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
   },
@@ -17,35 +20,47 @@ const useStyles = makeStyles((theme) => ({
   },
   nowPlaying: {
     height: 120,
-    flexDirection: "row",
+    flexDirection: 'row',
     padding: theme.spacing(0),
   },
 }));
 
-const Header = memo(
-  () => {
-    const classes = useStyles();
+const Header = hookMemo(() => {
+  const classes = useStyles();
 
-    return (
-      <div className={classes.root}>
-        <Grid className={classes.gridContainer} container spacing={3}>
-          <Grid item xs={7}>
-            <Typography variant={"h3"} gutterBottom>
-              {"IT'S THE CHRISTMAS SEASON"}
-            </Typography>
-            <Typography variant={"h3"} gutterBottom>
-              {"OF THE YEAR!"}
-            </Typography>
-          </Grid>
-          <Grid item xs={1} />
-          <Grid item xs={4}>
-            <NowPlaying />
-          </Grid>
+  useReactFontLoader({
+    url: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap',
+  });
+
+  const currentDate = new Date();
+  const year =
+    currentDate.getMonth() === 11 && currentDate.getDate() > 23
+      ? currentDate.getFullYear() + 1
+      : currentDate.getFullYear();
+
+  return (
+    <div className={classes.root}>
+      <Grid className={classes.gridContainer} container spacing={3}>
+        <Grid item xs={12}>
+          <Typography
+            variant={'h3'}
+            gutterBottom
+            style={{
+              textAlign: 'center',
+              fontFamily: 'Montserrat',
+              color: Colors.green_middle,
+              fontWeight: 'bold',
+            }}
+          >
+            {"IT'S THE CHRISTMAS SEASON OF THE YEAR!"}
+          </Typography>
         </Grid>
-      </div>
-    );
-  },
-  (prev, next) => React.isEqual(prev, next)
-);
+        <Grid item xs={12} style={{ justifyContent: 'center' }}>
+          <CountdownProgress date={`${year}-12-25T00:00:00`} />
+        </Grid>
+      </Grid>
+    </div>
+  );
+});
 
 export default Header;

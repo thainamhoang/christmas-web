@@ -15,16 +15,21 @@
     "lodash": "^4.17.20",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-font-loader": "^2.0.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "react-snowfall": "^1.0.2",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
+    "babel-version": "babel --version",
+    "babel-build": "babel src -d lib",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "all": "rm -rf yarn.lock yarn-error.log node_modules/ && yarn install --verbose && yarn start --reset-cache"
+    "all": "rm -rf yarn.lock yarn-error.log node_modules/ && yarn install --verbose && yarn start --reset-cache",
+    "deploy": "yarn build && firebase deploy --only hosting:special-gift"
   },
   "eslintConfig": {
     "extends": [
@@ -43,5 +48,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-syntax-jsx": "^7.12.1",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10"
   }
 }

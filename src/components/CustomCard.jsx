@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import cx from "clsx";
 import Card from "@material-ui/core/Card";
@@ -9,6 +9,8 @@ import TextInfoContent from "@mui-treasury/components/content/textInfo";
 import { useFourThreeCardMediaStyles } from "@mui-treasury/styles/cardMedia/fourThree";
 import { useN04TextInfoContentStyles } from "@mui-treasury/styles/textInfoContent/n04";
 import { useOverShadowStyles } from "@mui-treasury/styles/shadow/over";
+
+import { hookMemo } from "../hook";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 16,
     transition: "0.3s",
     "&:hover": {
-      // transform: "scale(1.025)",
       transform: "translateY(-10px)",
     },
     WebkitBoxShadow: "5px 5px 20px 5px rgba(0,0,0,0.2)",
@@ -31,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CustomCard = memo(
+const CustomCard = hookMemo(
   ({ url = "", source, content = {}, stylesAction = {}, stylesCard = {} }) => {
     const styles = useStyles();
     const mediaStyles = useFourThreeCardMediaStyles();
