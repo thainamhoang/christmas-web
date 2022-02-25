@@ -27,10 +27,12 @@ const App = hookMemo(() => {
       }}
     >
       <div
+        className="root"
         style={{
           position: 'absolute',
           width: '100%',
           height: contextValue?.dHeight,
+          backgroundImage: `center / contain no-repeat url("./assets/images/background.png")`,
         }}
       >
         <Snowfall color={Colors.blue_snow} snowflakeCount={600} />

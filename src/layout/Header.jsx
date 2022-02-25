@@ -29,7 +29,7 @@ const Header = hookMemo(() => {
   const classes = useStyles();
 
   useReactFontLoader({
-    url: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap',
+    url: 'https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap',
   });
 
   const currentDate = new Date();
@@ -43,16 +43,16 @@ const Header = hookMemo(() => {
       <Grid className={classes.gridContainer} container spacing={3}>
         <Grid item xs={12}>
           <Typography
-            variant={'h3'}
+            variant={'h2'}
             gutterBottom
             style={{
               textAlign: 'center',
-              fontFamily: 'Montserrat',
-              color: Colors.green_middle,
-              fontWeight: 'bold',
+              fontFamily: 'Caveat',
+              color: Colors.green_light,
+              // fontWeight: 'bold',
             }}
           >
-            {"IT'S THE CHRISTMAS SEASON OF THE YEAR!"}
+            {"It's the Holiday Season of the year!"}
           </Typography>
         </Grid>
         <Grid item xs={12} style={{ justifyContent: 'center' }}>

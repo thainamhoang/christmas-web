@@ -95,32 +95,25 @@ class CountdownProgress extends Component {
       <div>
         <div>
           <ReactFontLoader url="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" />
-          <Typography
-            variant={'h4'}
-            gutterBottom
-            style={{ textAlign: 'center', fontFamily: 'Montserrat', color: Colors.green_light }}
-          >
-            Countdown
-          </Typography>
         </div>
         <div className="countdown-wrapper">
           <div className="countdown-item">
-            <SVGCircle radius={daysRadius} />
+            {/* <SVGCircle radius={daysRadius} /> */}
             {this.addLeadingZeros(days)}
             <span>{days <= 1 ? 'day' : 'days'}</span>
           </div>
           <div className="countdown-item">
-            <SVGCircle radius={hoursRadius} />
+            {/* <SVGCircle radius={hoursRadius} /> */}
             {this.addLeadingZeros(hours)}
             <span>{hours <= 1 ? 'hour' : 'hours'}</span>
           </div>
           <div className="countdown-item">
-            <SVGCircle radius={minutesRadius} />
+            {/* <SVGCircle radius={minutesRadius} /> */}
             {this.addLeadingZeros(min)}
             <span>min</span>
           </div>
           <div className="countdown-item">
-            <SVGCircle radius={secondsRadius} />
+            {/* <SVGCircle radius={secondsRadius} /> */}
             {this.addLeadingZeros(sec)}
             <span>sec</span>
           </div>
